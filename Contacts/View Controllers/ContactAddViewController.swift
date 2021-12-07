@@ -8,15 +8,17 @@
 import UIKit
 
 class ContactAddViewController: UIViewController {
-
+    @IBOutlet weak var doneButton: UIBarButtonItem!
+    @IBOutlet weak var contactName: UITextField!
+    @IBOutlet weak var contactLastName: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationController?.navigationBar.topItem?.title = "Testtt"
+        contactName.becomeFirstResponder()
     }
     
     @IBAction func cancelAddAction(_ sender: Any) {
         dismiss(animated: true)
     }
-    
 }

@@ -64,7 +64,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="yMj-Tl-s7q">
-                                <rect key="frame" x="16" y="279.5" width="343" height="88"/>
+                                <rect key="frame" x="16" y="96" width="343" height="88"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Имя" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ibd-tM-jHX">
                                         <rect key="frame" x="0.0" y="0.0" width="343" height="40"/>
@@ -89,8 +89,8 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="0Lw-86-jTG" firstAttribute="trailing" secondItem="yMj-Tl-s7q" secondAttribute="trailing" constant="16" id="bic-PU-XsS"/>
-                            <constraint firstItem="yMj-Tl-s7q" firstAttribute="centerY" secondItem="qp7-5z-cLo" secondAttribute="centerY" id="vLD-Pu-SaS"/>
                             <constraint firstItem="yMj-Tl-s7q" firstAttribute="leading" secondItem="0Lw-86-jTG" secondAttribute="leading" constant="16" id="w1b-VJ-B7M"/>
+                            <constraint firstItem="yMj-Tl-s7q" firstAttribute="top" secondItem="0Lw-86-jTG" secondAttribute="top" constant="40" id="xU7-0W-T5Q"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Контакт" id="LV5-8c-u4g">
@@ -101,6 +101,11 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" enabled="NO" title="Готово" id="FPK-fY-LDd"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="contactLastName" destination="xGl-eR-xQo" id="WG0-bq-bg6"/>
+                        <outlet property="contactName" destination="ibd-tM-jHX" id="v2Y-QH-kbv"/>
+                        <outlet property="doneButton" destination="FPK-fY-LDd" id="sI2-2h-VVF"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QKZ-bH-xaX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
