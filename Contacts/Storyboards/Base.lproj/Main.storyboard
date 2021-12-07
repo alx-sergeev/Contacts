@@ -41,7 +41,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Контакты" id="9cY-vg-QyM">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="os5-oi-T74"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="os5-oi-T74">
+                            <connections>
+                                <segue destination="07V-4M-rRy" kind="presentation" id="9py-p7-4QT"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="69g-bo-Vnj" id="YGY-u9-5QI"/>
@@ -50,6 +54,57 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="826" y="54"/>
+        </scene>
+        <!--Contact Add View Controller-->
+        <scene sceneID="fYt-lD-k6J">
+            <objects>
+                <viewController id="07V-4M-rRy" customClass="ContactAddViewController" customModule="Contacts" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="qp7-5z-cLo">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HfJ-NI-kS4">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem title="Title" id="VKw-Pg-6IV">
+                                        <barButtonItem key="leftBarButtonItem" title="Отменить" id="2rd-mh-j1a">
+                                            <connections>
+                                                <action selector="cancelAddAction:" destination="07V-4M-rRy" id="VsH-7I-1bd"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" enabled="NO" title="Готово" id="Zy8-qB-tNc"/>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="yMj-Tl-s7q">
+                                <rect key="frame" x="16" y="285.5" width="343" height="76"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Имя" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ibd-tM-jHX">
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Фамилия" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xGl-eR-xQo">
+                                        <rect key="frame" x="0.0" y="42" width="343" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="0Lw-86-jTG"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="0Lw-86-jTG" firstAttribute="trailing" secondItem="yMj-Tl-s7q" secondAttribute="trailing" constant="16" id="bic-PU-XsS"/>
+                            <constraint firstItem="yMj-Tl-s7q" firstAttribute="centerY" secondItem="qp7-5z-cLo" secondAttribute="centerY" id="vLD-Pu-SaS"/>
+                            <constraint firstItem="yMj-Tl-s7q" firstAttribute="leading" secondItem="0Lw-86-jTG" secondAttribute="leading" constant="16" id="w1b-VJ-B7M"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QKZ-bH-xaX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1583" y="54"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="thz-lF-aPT">
