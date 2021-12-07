@@ -14,6 +14,7 @@ class ContactsListViewController: UIViewController {
     
     // MARK: - Properties
     let cellName = "contactCell"
+    var getContacts = Contact.getContacts()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,14 +26,14 @@ class ContactsListViewController: UIViewController {
 
 extension ContactsListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 20
+        return getContacts.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellName, for: indexPath)
         var cellConfiguration = cell.defaultContentConfiguration()
         
-        cellConfiguration.text = "Contact"
+        cellConfiguration.text = getContacts[indexPath.row].fullName
         
         cell.contentConfiguration = cellConfiguration
         
