@@ -11,9 +11,11 @@ class ContactAddViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.navigationController?.navigationBar.topItem?.title = "Testtt"
     }
     
-    @IBAction func cancelAddAction(_ sender: UIBarButtonItem) {
+    @IBAction func cancelAddAction(_ sender: Any) {
         dismiss(animated: true)
     }
     
