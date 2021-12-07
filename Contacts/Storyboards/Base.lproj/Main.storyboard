@@ -43,7 +43,7 @@
                     <navigationItem key="navigationItem" title="Контакты" id="9cY-vg-QyM">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="os5-oi-T74">
                             <connections>
-                                <segue destination="w6m-eW-YYR" kind="presentation" id="2Z6-Qz-m7L"/>
+                                <segue destination="w6m-eW-YYR" kind="presentation" identifier="toContactAddVC" id="2Z6-Qz-m7L"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -99,7 +99,11 @@
                                 <action selector="cancelAddAction:" destination="07V-4M-rRy" id="hS2-62-HqM"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" enabled="NO" title="Готово" id="FPK-fY-LDd"/>
+                        <barButtonItem key="rightBarButtonItem" enabled="NO" title="Готово" id="FPK-fY-LDd">
+                            <connections>
+                                <action selector="addContactAction:" destination="07V-4M-rRy" id="Bts-3L-t3q"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="contactLastName" destination="xGl-eR-xQo" id="WG0-bq-bg6"/>

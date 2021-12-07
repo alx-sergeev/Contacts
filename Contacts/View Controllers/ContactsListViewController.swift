@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol ContactsListViewControllerDelegate: AnyObject {
+    func addContact(name: String, lastName: String)
+}
+
 class ContactsListViewController: UIViewController {
     
     // MARK: - IBOutlets
@@ -14,12 +18,21 @@ class ContactsListViewController: UIViewController {
     
     // MARK: - Properties
     let cellName = "contactCell"
+    let segueToContactAdd = "toContactAddVC"
     var getContacts = Contact.getContacts()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.tableView.dataSource = self
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard segue.identifier == segueToContactAdd else { return }
+        guard let navigationController = segue.destination as? UINavigationController else { return }
+        guard let contactAddVC = navigationController.viewControllers.first as? ContactAddViewController else { return }
+        
+        contactAddVC.delegate = self
     }
 
 }
@@ -41,3 +54,10 @@ extension ContactsListViewController: UITableViewDataSource {
     }
 }
 
+extension ContactsListViewController: ContactsListViewControllerDelegate {
+    func addContact(name: String, lastName: String) {
+        getContacts.append(Contact(name: name, lastName: lastName))
+
+        self.tableView.reloadData()
+    }
+}

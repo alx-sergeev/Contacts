@@ -8,9 +8,14 @@
 import UIKit
 
 class ContactAddViewController: UIViewController {
+    
+    // MARK: - IBOutlets
     @IBOutlet weak var doneButton: UIBarButtonItem!
     @IBOutlet weak var contactName: UITextField!
     @IBOutlet weak var contactLastName: UITextField!
+    
+    // MARK: - Properties
+    weak var delegate: ContactsListViewControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,6 +35,11 @@ class ContactAddViewController: UIViewController {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
+    }
+    
+    @IBAction func addContactAction(_ sender: Any) {
+        delegate?.addContact(name: contactName.text ?? "", lastName: contactLastName.text ?? "")
+        dismiss(animated: true, completion: nil)
     }
 }
 
