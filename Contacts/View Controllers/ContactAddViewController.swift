@@ -18,6 +18,9 @@ class ContactAddViewController: UIViewController {
         contactName.delegate = self
         contactLastName.delegate = self
         
+        contactName.autocapitalizationType = UITextAutocapitalizationType.sentences
+        contactLastName.autocapitalizationType = UITextAutocapitalizationType.sentences
+        
         contactName.becomeFirstResponder()
     }
     
