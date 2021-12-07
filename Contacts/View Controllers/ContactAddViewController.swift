@@ -15,10 +15,32 @@ class ContactAddViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        contactName.delegate = self
+        contactLastName.delegate = self
+        
         contactName.becomeFirstResponder()
     }
     
     @IBAction func cancelAddAction(_ sender: Any) {
         dismiss(animated: true)
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+    }
+}
+
+extension ContactAddViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        switch textField {
+        case contactName:
+            contactLastName.becomeFirstResponder()
+        case contactLastName:
+            contactName.becomeFirstResponder()
+        default:
+            break
+        }
+        
+        return true
     }
 }
