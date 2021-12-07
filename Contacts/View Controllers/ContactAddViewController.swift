@@ -43,4 +43,12 @@ extension ContactAddViewController: UITextFieldDelegate {
         
         return true
     }
+    
+    func textFieldDidChangeSelection(_ textField: UITextField) {
+        if contactName.text != "" || contactLastName.text != "" {
+            doneButton.isEnabled = true
+        } else {
+            doneButton.isEnabled = false
+        }
+    }
 }
