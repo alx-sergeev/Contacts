@@ -40,7 +40,9 @@
                             <constraint firstItem="69g-bo-Vnj" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="VRm-G4-4m0"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Контакты" id="9cY-vg-QyM"/>
+                    <navigationItem key="navigationItem" title="Контакты" id="9cY-vg-QyM">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="os5-oi-T74"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="69g-bo-Vnj" id="YGY-u9-5QI"/>
                     </connections>
