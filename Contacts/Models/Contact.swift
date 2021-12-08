@@ -15,6 +15,6 @@ struct Contact {
 
 extension Contact {
     static func getContacts() -> [Contact] {
-        return [Contact(name: "Александр", lastName: "Сергеев")]
+        return []
     }
 }
