@@ -30,6 +30,8 @@ class ContactsListViewController: UIViewController {
 
         self.tableView.dataSource = self
         self.tableView.delegate = self
+        
+        navigationItem.leftBarButtonItem = editButtonItem
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -74,6 +76,24 @@ extension ContactsListViewController: UITableViewDataSource, UITableViewDelegate
         currentContactId = indexPath.row
         
         performSegue(withIdentifier: segueToContactDetail, sender: nil)
+    }
+    
+    override func setEditing(_ editing: Bool, animated: Bool) {
+        super.setEditing(editing, animated: animated)
+        
+        self.tableView.setEditing(editing, animated: animated)
+    }
+    
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        return .delete
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            getContacts.remove(at: indexPath.row)
+            
+            self.tableView.reloadData()
+        }
     }
 }
 
