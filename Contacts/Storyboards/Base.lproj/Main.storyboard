@@ -175,7 +175,13 @@
                             <constraint firstItem="d9K-5n-baY" firstAttribute="top" secondItem="9Zo-ZO-6L2" secondAttribute="top" constant="40" id="dCk-Jq-9gZ"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="0QP-eo-Ugy"/>
+                    <navigationItem key="navigationItem" id="0QP-eo-Ugy">
+                        <barButtonItem key="rightBarButtonItem" title="Править" id="O1c-Xr-IkW">
+                            <connections>
+                                <segue destination="74o-vK-C52" kind="presentation" identifier="toContactEditVC" animates="NO" modalPresentationStyle="fullScreen" id="iyw-r0-Fc0"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="fullNameLabel" destination="d9K-5n-baY" id="v7u-sH-ecT"/>
                     </connections>
@@ -183,6 +189,74 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ghb-vj-jEw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1629.5999999999999" y="429.53523238380814"/>
+        </scene>
+        <!--Contact Edit View Controller-->
+        <scene sceneID="8Rq-bo-Icq">
+            <objects>
+                <viewController id="ezn-tQ-OQH" customClass="ContactEditViewController" customModule="Contacts" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Mfw-RE-a1L">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="nuV-XA-N5E">
+                                <rect key="frame" x="16" y="84" width="343" height="88"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Имя" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6Se-M5-X5V">
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="rNj-S6-Mde"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Фамилия" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wpl-DI-4SK">
+                                        <rect key="frame" x="0.0" y="48" width="343" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="Ibv-ab-6PM"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="0po-bM-cyz"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="0po-bM-cyz" firstAttribute="trailing" secondItem="nuV-XA-N5E" secondAttribute="trailing" constant="16" id="Efb-7k-bjV"/>
+                            <constraint firstItem="nuV-XA-N5E" firstAttribute="leading" secondItem="0po-bM-cyz" secondAttribute="leading" constant="16" id="MoW-gh-Cwk"/>
+                            <constraint firstItem="nuV-XA-N5E" firstAttribute="top" secondItem="0po-bM-cyz" secondAttribute="top" constant="40" id="c8h-fB-HRK"/>
+                        </constraints>
+                    </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="Kp3-l9-0D8">
+                        <barButtonItem key="leftBarButtonItem" title="Отменить" id="VWR-vM-tvI"/>
+                        <barButtonItem key="rightBarButtonItem" enabled="NO" title="Готово" id="UlA-ZS-Lz4"/>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cfo-nu-AHX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3185" y="430"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="imk-lH-rj4">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="74o-vK-C52" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="p2e-ay-LWz"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="UAn-fc-9S9">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="ezn-tQ-OQH" kind="relationship" relationship="rootViewController" id="vZ6-L1-mCT"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="N3y-9i-94b" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2398" y="430"/>
         </scene>
     </scenes>
     <resources>
