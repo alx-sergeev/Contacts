@@ -230,10 +230,19 @@
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="Kp3-l9-0D8">
-                        <barButtonItem key="leftBarButtonItem" title="Отменить" id="VWR-vM-tvI"/>
+                        <barButtonItem key="leftBarButtonItem" title="Отменить" id="VWR-vM-tvI">
+                            <connections>
+                                <action selector="cancelEditAction:" destination="ezn-tQ-OQH" id="czU-eb-ojM"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" enabled="NO" title="Готово" id="UlA-ZS-Lz4"/>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="contactLastName" destination="wpl-DI-4SK" id="Vgx-ox-hYO"/>
+                        <outlet property="contactName" destination="6Se-M5-X5V" id="p23-zZ-ERd"/>
+                        <outlet property="doneButton" destination="UlA-ZS-Lz4" id="H93-7d-duC"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cfo-nu-AHX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

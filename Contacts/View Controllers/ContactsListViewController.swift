@@ -21,7 +21,7 @@ class ContactsListViewController: UIViewController {
     let segueToContactAdd = "toContactAddVC"
     let segueToContactDetail = "toContactDetail"
     var getContacts = Contact.getContacts()
-    var currentContact: Contact?
+    var currentContactId: Int?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,7 +40,8 @@ class ContactsListViewController: UIViewController {
         case segueToContactDetail:
             guard let contactDetailVC = segue.destination as? ContactDetailViewController else { return }
             
-            contactDetailVC.currentContact = currentContact
+            contactDetailVC.getContacts = getContacts
+            contactDetailVC.currentContactId = currentContactId
         default:
             break
         }
@@ -67,7 +68,7 @@ extension ContactsListViewController: UITableViewDataSource, UITableViewDelegate
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        currentContact = getContacts[indexPath.row]
+        currentContactId = indexPath.row
         
         performSegue(withIdentifier: segueToContactDetail, sender: nil)
     }
