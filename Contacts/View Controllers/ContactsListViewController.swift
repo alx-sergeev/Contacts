@@ -10,7 +10,7 @@ import UIKit
 protocol ContactsListViewControllerDelegate: AnyObject {
     func addContact(name: String, lastName: String)
     
-    func editContact(row: Int, name: String, lastName: String)
+    func newContacts(_ newArray: [Contact])
 }
 
 class ContactsListViewController: UIViewController {
@@ -38,10 +38,11 @@ class ContactsListViewController: UIViewController {
             guard let navigationController = segue.destination as? UINavigationController else { return }
             guard let contactAddVC = navigationController.viewControllers.first as? ContactAddViewController else { return }
             
-            contactAddVC.delegate = self
+            contactAddVC.delegateList = self
         case segueToContactDetail:
             guard let contactDetailVC = segue.destination as? ContactDetailViewController else { return }
             
+            contactDetailVC.delegateList = self
             contactDetailVC.getContacts = getContacts
             contactDetailVC.currentContactId = currentContactId
         default:
@@ -83,9 +84,8 @@ extension ContactsListViewController: ContactsListViewControllerDelegate {
         self.tableView.reloadData()
     }
     
-    func editContact(row: Int, name: String, lastName: String) {
-        getContacts[row].name = name
-        getContacts[row].lastName = lastName
+    func newContacts(_ newArray: [Contact]) {
+        getContacts = newArray
         
         self.tableView.reloadData()
     }

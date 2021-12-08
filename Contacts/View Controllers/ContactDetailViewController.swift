@@ -16,6 +16,7 @@ class ContactDetailViewController: UIViewController {
     @IBOutlet weak var fullNameLabel: UILabel!
     
     // MARK: - Properties
+    weak var delegateList: ContactsListViewControllerDelegate?
     var getContacts: [Contact]?
     var currentContactId: Int?
     let segueToContactEdit = "toContactEditVC"
@@ -39,6 +40,14 @@ class ContactDetailViewController: UIViewController {
             contactEditVC.currentContactId = currentContactId
         default:
             break
+        }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        if let arContacts = getContacts {
+            delegateList?.newContacts(arContacts)
         }
     }
     

@@ -15,7 +15,7 @@ class ContactAddViewController: UIViewController {
     @IBOutlet weak var contactLastName: UITextField!
     
     // MARK: - Properties
-    weak var delegate: ContactsListViewControllerDelegate?
+    weak var delegateList: ContactsListViewControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,7 +38,7 @@ class ContactAddViewController: UIViewController {
     }
     
     @IBAction func addContactAction(_ sender: Any) {
-        delegate?.addContact(name: contactName.text ?? "", lastName: contactLastName.text ?? "")
+        delegateList?.addContact(name: contactName.text ?? "", lastName: contactLastName.text ?? "")
         dismiss(animated: true, completion: nil)
     }
 }
