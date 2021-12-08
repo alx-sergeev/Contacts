@@ -95,6 +95,12 @@ extension ContactsListViewController: UITableViewDataSource, UITableViewDelegate
             self.tableView.reloadData()
         }
     }
+    
+    func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        let currentContact = getContacts.remove(at: sourceIndexPath.row)
+        
+        getContacts.insert(currentContact, at: destinationIndexPath.row)
+    }
 }
 
 extension ContactsListViewController: ContactsListViewControllerDelegate {
