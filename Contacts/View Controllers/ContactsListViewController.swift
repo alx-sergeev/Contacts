@@ -25,6 +25,7 @@ class ContactsListViewController: UIViewController {
         super.viewDidLoad()
 
         self.tableView.dataSource = self
+        self.tableView.delegate = self
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -37,7 +38,7 @@ class ContactsListViewController: UIViewController {
 
 }
 
-extension ContactsListViewController: UITableViewDataSource {
+extension ContactsListViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return getContacts.count
     }
@@ -51,6 +52,10 @@ extension ContactsListViewController: UITableViewDataSource {
         cell.contentConfiguration = cellConfiguration
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }
 
