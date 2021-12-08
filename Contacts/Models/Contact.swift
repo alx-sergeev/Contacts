@@ -5,6 +5,7 @@
 //  Created by Сергеев Александр on 07.12.2021.
 //
 
+// Модель для работы с контактами
 struct Contact {
     var name: String?
     var lastName: String?
@@ -14,6 +15,7 @@ struct Contact {
 }
 
 extension Contact {
+    // Получаем список контактов, по умолчанию пустой массив
     static func getContacts() -> [Contact] {
         return []
     }
