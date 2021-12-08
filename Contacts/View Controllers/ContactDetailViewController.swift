@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol ContactsDetailViewControllerDelegate: AnyObject {
+    func editContact(row: Int, name: String, lastName: String)
+}
+
 class ContactDetailViewController: UIViewController {
     // MARK: - IBOutlets
     @IBOutlet weak var fullNameLabel: UILabel!
@@ -30,6 +34,7 @@ class ContactDetailViewController: UIViewController {
             guard let navigationController = segue.destination as? UINavigationController else { return }
             guard let contactEditVC = navigationController.viewControllers.first as? ContactEditViewController else { return }
             
+            contactEditVC.delegateDetail = self
             contactEditVC.getContacts = getContacts
             contactEditVC.currentContactId = currentContactId
         default:
@@ -37,4 +42,19 @@ class ContactDetailViewController: UIViewController {
         }
     }
     
+}
+
+extension ContactDetailViewController: ContactsDetailViewControllerDelegate {
+    func editContact(row: Int, name: String, lastName: String) {
+        getContacts?[row].name = name
+        getContacts?[row].lastName = lastName
+        
+        updateUI()
+    }
+    
+    func updateUI() {
+        if let contactId = currentContactId, let contact = getContacts?[contactId] {
+            fullNameLabel.text = contact.fullName
+        }
+    }
 }

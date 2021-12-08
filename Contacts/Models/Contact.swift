@@ -6,8 +6,8 @@
 //
 
 struct Contact {
-    let name: String?
-    let lastName: String?
+    var name: String?
+    var lastName: String?
     var fullName: String {
         return "\(name ?? "") \(lastName ?? "")"
     }
@@ -15,6 +15,6 @@ struct Contact {
 
 extension Contact {
     static func getContacts() -> [Contact] {
-        return []
+        return [Contact(name: "Александр", lastName: "Сергеев")]
     }
 }

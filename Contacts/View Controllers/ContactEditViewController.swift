@@ -15,6 +15,8 @@ class ContactEditViewController: UIViewController {
     @IBOutlet weak var contactLastName: UITextField!
     
     // MARK: - Properties
+    weak var delegateDetail: ContactsDetailViewControllerDelegate?
+    
     var getContacts: [Contact]?
     var currentContactId: Int?
     var oldName: String?
@@ -37,6 +39,14 @@ class ContactEditViewController: UIViewController {
 
     @IBAction func cancelEditAction(_ sender: Any) {
         dismiss(animated: false)
+    }
+    
+    
+    @IBAction func editContactAction(_ sender: Any) {
+        guard let rowId = currentContactId else { return }
+        
+        delegateDetail?.editContact(row: rowId, name: contactName.text ?? "", lastName: contactLastName.text ?? "")
+        dismiss(animated: true, completion: nil)
     }
 }
 

@@ -235,7 +235,11 @@
                                 <action selector="cancelEditAction:" destination="ezn-tQ-OQH" id="czU-eb-ojM"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" enabled="NO" title="Готово" id="UlA-ZS-Lz4"/>
+                        <barButtonItem key="rightBarButtonItem" enabled="NO" title="Готово" id="UlA-ZS-Lz4">
+                            <connections>
+                                <action selector="editContactAction:" destination="ezn-tQ-OQH" id="xWr-aO-UVL"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>

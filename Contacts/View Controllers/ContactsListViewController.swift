@@ -9,6 +9,8 @@ import UIKit
 
 protocol ContactsListViewControllerDelegate: AnyObject {
     func addContact(name: String, lastName: String)
+    
+    func editContact(row: Int, name: String, lastName: String)
 }
 
 class ContactsListViewController: UIViewController {
@@ -78,6 +80,13 @@ extension ContactsListViewController: ContactsListViewControllerDelegate {
     func addContact(name: String, lastName: String) {
         getContacts.append(Contact(name: name, lastName: lastName))
 
+        self.tableView.reloadData()
+    }
+    
+    func editContact(row: Int, name: String, lastName: String) {
+        getContacts[row].name = name
+        getContacts[row].lastName = lastName
+        
         self.tableView.reloadData()
     }
 }
