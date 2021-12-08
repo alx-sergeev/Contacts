@@ -19,7 +19,9 @@ class ContactsListViewController: UIViewController {
     // MARK: - Properties
     let cellName = "contactCell"
     let segueToContactAdd = "toContactAddVC"
+    let segueToContactDetail = "toContactDetail"
     var getContacts = Contact.getContacts()
+    var currentContact: Contact?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,11 +31,19 @@ class ContactsListViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard segue.identifier == segueToContactAdd else { return }
-        guard let navigationController = segue.destination as? UINavigationController else { return }
-        guard let contactAddVC = navigationController.viewControllers.first as? ContactAddViewController else { return }
-        
-        contactAddVC.delegate = self
+        switch segue.identifier {
+        case segueToContactAdd:
+            guard let navigationController = segue.destination as? UINavigationController else { return }
+            guard let contactAddVC = navigationController.viewControllers.first as? ContactAddViewController else { return }
+            
+            contactAddVC.delegate = self
+        case segueToContactDetail:
+            guard let contactDetailVC = segue.destination as? ContactDetailViewController else { return }
+            
+            contactDetailVC.currentContact = currentContact
+        default:
+            break
+        }
     }
 
 }
@@ -56,6 +66,10 @@ extension ContactsListViewController: UITableViewDataSource, UITableViewDelegate
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        
+        currentContact = getContacts[indexPath.row]
+        
+        performSegue(withIdentifier: segueToContactDetail, sender: nil)
     }
 }
 

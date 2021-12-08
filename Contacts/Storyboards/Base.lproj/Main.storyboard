@@ -49,6 +49,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="69g-bo-Vnj" id="YGY-u9-5QI"/>
+                        <segue destination="Vco-5o-jgq" kind="show" identifier="toContactDetail" id="rIO-7B-J4i"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -113,7 +114,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QKZ-bH-xaX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2361" y="54"/>
+            <point key="canvasLocation" x="2399" y="-260"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="thz-lF-aPT">
@@ -149,7 +150,39 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TG7-Hn-e9Y" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1613.5999999999999" y="53.523238380809602"/>
+            <point key="canvasLocation" x="1630" y="-260"/>
+        </scene>
+        <!--Contact Detail View Controller-->
+        <scene sceneID="Rgw-vx-3sx">
+            <objects>
+                <viewController id="Vco-5o-jgq" customClass="ContactDetailViewController" customModule="Contacts" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="QT5-Fc-3lb">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d9K-5n-baY">
+                                <rect key="frame" x="16" y="136" width="343" height="29"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="9Zo-ZO-6L2"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="9Zo-ZO-6L2" firstAttribute="trailing" secondItem="d9K-5n-baY" secondAttribute="trailing" constant="16" id="IFf-cO-Vk6"/>
+                            <constraint firstItem="d9K-5n-baY" firstAttribute="leading" secondItem="9Zo-ZO-6L2" secondAttribute="leading" constant="16" id="cK4-CR-veO"/>
+                            <constraint firstItem="d9K-5n-baY" firstAttribute="top" secondItem="9Zo-ZO-6L2" secondAttribute="top" constant="40" id="dCk-Jq-9gZ"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="0QP-eo-Ugy"/>
+                    <connections>
+                        <outlet property="fullNameLabel" destination="d9K-5n-baY" id="v7u-sH-ecT"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ghb-vj-jEw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1629.5999999999999" y="429.53523238380814"/>
         </scene>
     </scenes>
     <resources>

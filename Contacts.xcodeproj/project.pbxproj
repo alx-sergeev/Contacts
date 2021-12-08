@@ -15,6 +15,7 @@
 		3FF4C3BA275F83F4008C3A67 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3FF4C3B9275F83F4008C3A67 /* Assets.xcassets */; };
 		3FF4C3BD275F83F4008C3A67 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3FF4C3BB275F83F4008C3A67 /* LaunchScreen.storyboard */; };
 		3FF4C3C9275F9395008C3A67 /* ContactAddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF4C3C8275F9395008C3A67 /* ContactAddViewController.swift */; };
+		3FFEB0F027607231004B5A42 /* ContactDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FFEB0EF27607231004B5A42 /* ContactDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		3FF4C3BC275F83F4008C3A67 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3FF4C3BE275F83F4008C3A67 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3FF4C3C8275F9395008C3A67 /* ContactAddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactAddViewController.swift; sourceTree = "<group>"; };
+		3FFEB0EF27607231004B5A42 /* ContactDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +84,7 @@
 			children = (
 				3FF4C3B4275F83F3008C3A67 /* ContactsListViewController.swift */,
 				3FF4C3C8275F9395008C3A67 /* ContactAddViewController.swift */,
+				3FFEB0EF27607231004B5A42 /* ContactDetailViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -188,6 +191,7 @@
 				3FF4C3C9275F9395008C3A67 /* ContactAddViewController.swift in Sources */,
 				3FE446F9275FC7E400CA3F61 /* Contact.swift in Sources */,
 				3FF4C3B1275F83F3008C3A67 /* AppDelegate.swift in Sources */,
+				3FFEB0F027607231004B5A42 /* ContactDetailViewController.swift in Sources */,
 				3FF4C3B3275F83F3008C3A67 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
