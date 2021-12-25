@@ -6,7 +6,7 @@
 //
 
 // Модель для работы с контактами
-struct Contact {
+struct Contact: Codable {
     var name: String?
     var lastName: String?
     var fullName: String {

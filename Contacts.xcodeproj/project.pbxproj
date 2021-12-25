@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3F8DE572277730D8001FDC5F /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8DE571277730D8001FDC5F /* StorageManager.swift */; };
 		3FE446F9275FC7E400CA3F61 /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE446F8275FC7E400CA3F61 /* Contact.swift */; };
 		3FF4C3B1275F83F3008C3A67 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF4C3B0275F83F3008C3A67 /* AppDelegate.swift */; };
 		3FF4C3B3275F83F3008C3A67 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF4C3B2275F83F3008C3A67 /* SceneDelegate.swift */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3F8DE571277730D8001FDC5F /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 		3FE446F8275FC7E400CA3F61 /* Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
 		3FF4C3AD275F83F2008C3A67 /* Contacts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Contacts.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3FF4C3B0275F83F3008C3A67 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -49,6 +51,7 @@
 			isa = PBXGroup;
 			children = (
 				3FE446F8275FC7E400CA3F61 /* Contact.swift */,
+				3F8DE571277730D8001FDC5F /* StorageManager.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -197,6 +200,7 @@
 				3FF4C3B1275F83F3008C3A67 /* AppDelegate.swift in Sources */,
 				3FFEB0F027607231004B5A42 /* ContactDetailViewController.swift in Sources */,
 				3FF4C3B3275F83F3008C3A67 /* SceneDelegate.swift in Sources */,
+				3F8DE572277730D8001FDC5F /* StorageManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
