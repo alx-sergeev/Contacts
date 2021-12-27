@@ -9,7 +9,7 @@ import UIKit
 
 // Делегат детального экрана контакта
 protocol ContactsDetailViewControllerDelegate: AnyObject {
-    func editContact(row: Int, name: String, lastName: String)
+    func editContact(at index: Int, name: String, lastName: String)
 }
 
 class ContactDetailViewController: UIViewController {
@@ -18,8 +18,8 @@ class ContactDetailViewController: UIViewController {
     @IBOutlet weak var fullNameLabel: UILabel!
     
     // MARK: - Properties
-    weak var delegateList: ContactsListViewControllerDelegate? // Делегат View Controller-а экрана со списком контактов
-    var getContacts: [Contact]? // Список контактов
+    let storageManager = StorageManager.shared
+    lazy var getContacts = storageManager.getContacts() // Список контактов
     var currentContactId: Int? // Индекс контакта в массиве
     let segueToContactEdit = "toContactEditVC"
     
@@ -27,7 +27,9 @@ class ContactDetailViewController: UIViewController {
         super.viewDidLoad()
         
         // Прописываем ФИО в label
-        if let contactId = currentContactId, let contact = getContacts?[contactId] {
+        if let contactId = currentContactId {
+            let contact = getContacts[contactId]
+            
             fullNameLabel.text = contact.fullName
         }
     }
@@ -38,35 +40,18 @@ class ContactDetailViewController: UIViewController {
         case segueToContactEdit: // Экран редактирования контакта
             guard let navigationController = segue.destination as? UINavigationController else { return }
             guard let contactEditVC = navigationController.viewControllers.first as? ContactEditViewController else { return }
-            
+
             contactEditVC.delegateDetail = self
-            contactEditVC.getContacts = getContacts
             contactEditVC.currentContactId = currentContactId
         default:
             break
         }
     }
-    
-    // Используем метод жизненного цикла View Controller
-    // Когда вьюха захочет закрыться,
-    // с помощью механизма делегата передаем данные на экран со списком контактов
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        
-        if let arContacts = getContacts {
-            delegateList?.newContacts(arContacts)
-        }
-    }
-    
 }
 
-// Реализуем необходимые методы протокола делегата
 extension ContactDetailViewController: ContactsDetailViewControllerDelegate {
-    // Изменяет данные контакта
-    // и обновляет UI
-    func editContact(row: Int, name: String, lastName: String) {
-        getContacts?[row].name = name
-        getContacts?[row].lastName = lastName
+    func editContact(at index: Int, name: String, lastName: String) {
+        let _ = storageManager.editContact(at: index, name: name, lastName: lastName)
         
         updateUI()
     }
@@ -74,7 +59,11 @@ extension ContactDetailViewController: ContactsDetailViewControllerDelegate {
     // Метод обновляет UI,
     // а именно ФИО контакта
     func updateUI() {
-        if let contactId = currentContactId, let contact = getContacts?[contactId] {
+        getContacts = StorageManager.shared.getContacts()
+        
+        if let contactId = currentContactId {
+            let contact = getContacts[contactId]
+            
             fullNameLabel.text = contact.fullName
         }
     }

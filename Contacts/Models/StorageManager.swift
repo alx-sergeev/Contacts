@@ -16,28 +16,51 @@ class StorageManager {
     let contactKey = "contacts"
     let userDefaults = UserDefaults.standard
     
-    // Добавляем контакт
-    func addContact(contact: Contact) {
-        var contacts = getContacts()
-        contacts.append(contact)
+    // Получаем список контактов
+    func getContacts() -> [Contact] {
+        guard let data = userDefaults.value(forKey: contactKey) as? Data,
+              let contacts = try? JSONDecoder().decode([Contact].self, from: data) else { return [] }
         
-        userDefaults.set(contacts, forKey: contactKey)
+        return contacts
+    }
+    
+    // Добавляем контакт
+    func addContact(contact: Contact, at index: Int? = nil) -> Bool {
+        var contacts = getContacts()
+        
+        if let index = index {
+            contacts.insert(contact, at: index)
+        } else {
+            contacts.append(contact)
+        }
+        
+        guard let data = try? JSONEncoder().encode(contacts) else { return false }
+        userDefaults.set(data, forKey: contactKey)
+        
+        return true
     }
     
     // Удаляем контакт
-    func deleteContact(at index: Int) {
+    func deleteContact(at index: Int) -> Contact? {
         var contacts = getContacts()
-        contacts.remove(at: index)
+        let currentContact = contacts.remove(at: index)
+        guard let data = try? JSONEncoder().encode(contacts) else { return nil }
         
-        userDefaults.set(contacts, forKey: contactKey)
+        userDefaults.set(data, forKey: contactKey)
+        
+        return currentContact
     }
     
-    // Получаем список контактов
-    func getContacts() -> [Contact] {
-        if let contacts = userDefaults.value(forKey: contactKey) as? [Contact] {
-            return contacts
-        }
+    // Изменяет фио контакта
+    func editContact(at index: Int, name: String, lastName: String) -> Bool {
+        var contacts = getContacts()
+        contacts[index].name = name
+        contacts[index].lastName = lastName
         
-        return []
+        guard let data = try? JSONEncoder().encode(contacts) else { return false }
+        
+        userDefaults.set(data, forKey: contactKey)
+        
+        return true
     }
 }

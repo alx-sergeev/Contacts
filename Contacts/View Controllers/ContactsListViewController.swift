@@ -9,8 +9,7 @@ import UIKit
 
 // Делегат списка контактов
 protocol ContactsListViewControllerDelegate: AnyObject {
-    func addContact(name: String, lastName: String)
-    func newContacts(_ newArray: [Contact])
+    func addContact(contact: Contact)
 }
 
 class ContactsListViewController: UIViewController {
@@ -22,7 +21,8 @@ class ContactsListViewController: UIViewController {
     let cellName = "contactCell"
     let segueToContactAdd = "toContactAddVC"
     let segueToContactDetail = "toContactDetail"
-    var getContacts = Contact.getContacts() // Список контактов
+    let storageManager = StorageManager.shared
+    lazy var getContacts = storageManager.getContacts() // Список контактов
     var currentContactId: Int? // Индекс контакта в массиве
 
     override func viewDidLoad() {
@@ -37,6 +37,10 @@ class ContactsListViewController: UIViewController {
         navigationItem.leftBarButtonItem = editButtonItem
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        updateUI()
+    }
+    
     // Передаем данные вперед
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier {
@@ -48,14 +52,11 @@ class ContactsListViewController: UIViewController {
         case segueToContactDetail: // На экран с детальной контакта
             guard let contactDetailVC = segue.destination as? ContactDetailViewController else { return }
             
-            contactDetailVC.delegateList = self
-            contactDetailVC.getContacts = getContacts
             contactDetailVC.currentContactId = currentContactId
         default:
             break
         }
     }
-
 }
 
 extension ContactsListViewController: UITableViewDataSource, UITableViewDelegate {
@@ -103,34 +104,31 @@ extension ContactsListViewController: UITableViewDataSource, UITableViewDelegate
     // Удаляем контакт
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            getContacts.remove(at: indexPath.row)
+            let _ = storageManager.deleteContact(at: indexPath.row)
             
-            self.tableView.reloadData()
+            updateUI()
         }
     }
     
     // Функционал Drag&Drop для строк в режиме редактирования таблицы
     func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-        let currentContact = getContacts.remove(at: sourceIndexPath.row)
+        guard let currentContact = storageManager.deleteContact(at: sourceIndexPath.row) else { return }
         
-        getContacts.insert(currentContact, at: destinationIndexPath.row)
+        let _ = storageManager.addContact(contact: currentContact, at: destinationIndexPath.row)
     }
 }
 
 extension ContactsListViewController: ContactsListViewControllerDelegate {
-    // Метод добавляет контакт
-    // и перезагружает данные UITableView
-    func addContact(name: String, lastName: String) {
-        getContacts.append(Contact(name: name, lastName: lastName))
-
-        self.tableView.reloadData()
+    func addContact(contact: Contact) {
+        let _ = storageManager.addContact(contact: contact)
+        
+        updateUI()
     }
     
-    // Метод заменяет существующий массив контактов на новый,
-    // который приходит с экрана детальной контакта
-    func newContacts(_ newArray: [Contact]) {
-        getContacts = newArray
+    func updateUI() {
+        getContacts = storageManager.getContacts()
         
         self.tableView.reloadData()
+        
     }
 }

@@ -48,7 +48,8 @@ class ContactAddViewController: UIViewController {
     // Добавляем контакт с помощью делегата экрана со списком контактов
     // Закрываем экран
     @IBAction func addContactAction(_ sender: Any) {
-        delegateList?.addContact(name: contactName.text ?? "", lastName: contactLastName.text ?? "")
+        delegateList?.addContact(contact: Contact(name: contactName.text, lastName: contactLastName.text))
+
         dismiss(animated: true, completion: nil)
     }
 }

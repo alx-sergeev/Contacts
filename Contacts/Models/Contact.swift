@@ -13,10 +13,3 @@ struct Contact: Codable {
         return "\(name ?? "") \(lastName ?? "")"
     }
 }
-
-extension Contact {
-    // Получаем список контактов, по умолчанию пустой массив
-    static func getContacts() -> [Contact] {
-        return []
-    }
-}

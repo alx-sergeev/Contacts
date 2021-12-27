@@ -16,8 +16,8 @@ class ContactEditViewController: UIViewController {
     
     // MARK: - Properties
     weak var delegateDetail: ContactsDetailViewControllerDelegate? // Делегат View Controller-а экрана со списком контактов
-    
-    var getContacts: [Contact]? // Список контактов
+    let storageManager = StorageManager.shared
+    lazy var getContacts = storageManager.getContacts() // Список контактов
     var currentContactId: Int? // Индекс контакта в массиве
     var oldName: String? // Предыдущее содержимое поля Имя
     var oldLastName: String? // Предыдущее содержимое поля Фамилия
@@ -26,7 +26,9 @@ class ContactEditViewController: UIViewController {
         super.viewDidLoad()
         
         // Подставляем данные в поля Имя, Фамилия
-        if let contactId = currentContactId, let contact = getContacts?[contactId] {
+        if let contactId = currentContactId {
+            let contact = getContacts[contactId]
+            
             oldName = contact.name
             contactName.text = contact.name
             
@@ -48,8 +50,10 @@ class ContactEditViewController: UIViewController {
     // Изменяем данные текущего контакта с помощью делегата, закрываем экран
     @IBAction func editContactAction(_ sender: Any) {
         guard let rowId = currentContactId else { return }
+        guard let name = contactName.text, let lastName = contactLastName.text else { return }
         
-        delegateDetail?.editContact(row: rowId, name: contactName.text ?? "", lastName: contactLastName.text ?? "")
+        delegateDetail?.editContact(at: rowId, name: name, lastName: lastName)
+
         dismiss(animated: true, completion: nil)
     }
 }
