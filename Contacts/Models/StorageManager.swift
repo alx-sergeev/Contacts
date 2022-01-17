@@ -13,8 +13,8 @@ class StorageManager {
     static let shared = StorageManager()
     
     // MARK: - Properties
-    let contactKey = "contacts"
-    let userDefaults = UserDefaults.standard
+    private let contactKey = "contacts"
+    private let userDefaults = UserDefaults.standard
     
     // Получаем список контактов
     func getContacts() -> [Contact] {

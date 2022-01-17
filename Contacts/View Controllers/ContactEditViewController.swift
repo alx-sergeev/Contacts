@@ -16,11 +16,11 @@ class ContactEditViewController: UIViewController {
     
     // MARK: - Properties
     weak var delegateDetail: ContactsDetailViewControllerDelegate? // Делегат View Controller-а экрана со списком контактов
-    let storageManager = StorageManager.shared
-    lazy var getContacts = storageManager.getContacts() // Список контактов
+    private let storageManager = StorageManager.shared
+    private lazy var getContacts = storageManager.getContacts() // Список контактов
     var currentContactId: Int? // Индекс контакта в массиве
-    var oldName: String? // Предыдущее содержимое поля Имя
-    var oldLastName: String? // Предыдущее содержимое поля Фамилия
+    private var oldName: String? // Предыдущее содержимое поля Имя
+    private var oldLastName: String? // Предыдущее содержимое поля Фамилия
     
     override func viewDidLoad() {
         super.viewDidLoad()

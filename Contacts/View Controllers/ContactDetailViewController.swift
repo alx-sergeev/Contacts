@@ -18,10 +18,10 @@ class ContactDetailViewController: UIViewController {
     @IBOutlet weak var fullNameLabel: UILabel!
     
     // MARK: - Properties
-    let storageManager = StorageManager.shared
-    lazy var getContacts = storageManager.getContacts() // Список контактов
+    private let storageManager = StorageManager.shared
+    private lazy var getContacts = storageManager.getContacts() // Список контактов
     var currentContactId: Int? // Индекс контакта в массиве
-    let segueToContactEdit = "toContactEditVC"
+    private let segueToContactEdit = "toContactEditVC"
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -18,12 +18,12 @@ class ContactsListViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     // MARK: - Properties
-    let cellName = "contactCell"
-    let segueToContactAdd = "toContactAddVC"
-    let segueToContactDetail = "toContactDetail"
-    let storageManager = StorageManager.shared
-    lazy var getContacts = storageManager.getContacts() // Список контактов
-    var currentContactId: Int? // Индекс контакта в массиве
+    private let cellName = "contactCell"
+    private let segueToContactAdd = "toContactAddVC"
+    private let segueToContactDetail = "toContactDetail"
+    private let storageManager = StorageManager.shared
+    private lazy var getContacts = storageManager.getContacts() // Список контактов
+    private var currentContactId: Int? // Индекс контакта в массиве
 
     override func viewDidLoad() {
         super.viewDidLoad()
